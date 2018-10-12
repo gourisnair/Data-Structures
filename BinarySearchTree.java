@@ -60,9 +60,48 @@ class Tree {
       System.out.println(node.data);
     }
   }
+
+  public int heightOfTree(Node node) {
+    if(node == null) {
+      return 0;
+    }else {
+      int l = heightOfTree(node.left);
+      int r = heightOfTree(node.right);
+      if(l > r) {
+        return (l + 1);
+      } else {
+        return (r + 1);
+      }
+    }
+  }
+
+  public void printGivenLevel(Node node, int level) {
+    if (node == null) {
+      return;
+    } else {
+      if(level == 0) {
+        System.out.print(node.data + " ");
+      } else {
+        if(level > 0) {
+          printGivenLevel(node.left, level - 1);
+          printGivenLevel(node.right, level - 1);
+        }
+      }
+    }
+  }
+
+  public void printLevelOrder(Node node) {
+    if(node == null) {
+      return;
+    } else {
+      for(int i = 0; i < heightOfTree(node); i++) {
+        printGivenLevel(node, i);
+      }
+    }
+  }
 }
 
-public class Binarytree {
+public class BinarySearchTree {
   public static void main(String[] args) {
     Tree t1 = new Tree(new Node(10));
     t1.addNode(2, t1.root);
@@ -71,11 +110,19 @@ public class Binarytree {
     t1.addNode(4, t1.root);
     t1.addNode(20, t1.root);
     t1.addNode(40, t1.root);
+    //System.out.print(t1.root.data);
     System.out.println("In - order:");
     t1.printInorder(t1.root);
     System.out.println("Pre - order:");
     t1.printPreorder(t1.root);
     System.out.println("Post - order:");
     t1.printPostorder(t1.root);
+    System.out.print("Height of tree: ");
+    System.out.println(t1.heightOfTree(t1.root));
+    System.out.print("Given level is: ");
+    t1.printGivenLevel(t1.root, 2);
+    System.out.println(" ");
+    System.out.print("Level order: ");
+    t1.printLevelOrder(t1.root);
   }
 }
