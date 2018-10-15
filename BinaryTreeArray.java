@@ -1,46 +1,60 @@
-class Node {
-  int data;
-  Node left;
-  Node right;
-  Node(int data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
-  }
-}
-
 class Tree {
-  Node root;
-  Tree() {
-    this.root = null;
+  int max;
+  int a[];
+  Tree(int max) {
+    this.max = max;
+    a = new int[max];
   }
 
-  public Node insertLevelOrder(int[] a, Node root, int i) {
+  public int leftChild(int pos) {
+    return (2*pos)+1;
+  }
 
-    if(i < a.length) {
-      Node temp = new Node(a[i]);
-      root = temp;
-      root.left = insertLevelOrder(a, root.left, 2*i+1);
-      root.right = insertLevelOrder(a, root.right, 2*i+2);
+  public int rightChild(int pos) {
+    return (2*pos)+2;
+  }
+
+  public int parent(int pos) {
+    return (pos/2);
+  }
+
+  public void insertParent(int data) {
+    a[0] = data;
+  }
+
+  public void insertLeft(int data, int pos) {
+    if(a[parent(pos)] == 0) {
+      System.out.println("No parent node");
+      return;
+    } else {
+      a[leftChild(pos)] = data;
     }
-
-    return root;
   }
 
-  public void printInorder(Node root) {
-    if(root != null) {
-      printInorder(root.left);
-      System.out.println(root.data);
-      printInorder(root.right);
+  public void insertRight(int data, int pos) {
+    if(a[parent(pos)] == 0) {
+      System.out.println("No parent node");
+      return;
+    } else {
+      a[rightChild(pos)] = data;
+    }
+  }
+
+  public void printLevelOrder() {
+    for(int i = 0; i < 5; i++) {
+      System.out.print(a[i] + " ");
     }
   }
 }
 
 public class BinaryTreeArray {
   public static void main(String[] args) {
-    Tree t = new Tree();
-    int[] a = {1, 2, 3, 4, 5, 6, 6, 6, 6};
-    t.root = t.insertLevelOrder(a, t.root, 0);
-    t.printInorder(t.root);
+    Tree t = new Tree(5);
+    t.insertParent(10);
+    t.insertLeft(7, 0);
+    t.insertRight(15, 0);
+    t.insertLeft(20, 1);
+    t.insertRight(30, 2);
+    t.printLevelOrder();
   }
 }
