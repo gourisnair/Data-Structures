@@ -41,7 +41,7 @@ class Tree {
   }
 
   public void printLevelOrder() {
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < 7; i++) {
       System.out.print(a[i] + " ");
     }
   }
@@ -49,11 +49,11 @@ class Tree {
 
 public class BinaryTreeArray {
   public static void main(String[] args) {
-    Tree t = new Tree(5);
+    Tree t = new Tree(10);
     t.insertParent(10);
     t.insertLeft(7, 0);
     t.insertRight(15, 0);
-    t.insertLeft(20, 1);
+    t.insertLeft(6, 1);
     t.insertRight(30, 2);
     t.printLevelOrder();
   }
