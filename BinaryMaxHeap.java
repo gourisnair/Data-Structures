@@ -28,41 +28,25 @@ class Heap {
     a[0] = data;
   }
 
-  /*public void insertLeft(int data, int pos) {
-    if(a[parent(pos)] > data) {
+  public void insertLeft(int data, int pos) {
+    if(a[pos] > data) {
       a[2*pos+1] = data;
     } else {
       a[2*pos+1] = data;
       swap(pos, 2*pos+1);
+      return;
     }
   }
 
   public void insertRight(int data, int pos) {
-    if(a[parent(pos)] > data) {
+    if(a[pos] > data) {
       a[2*pos+2] = data;
     } else {
       a[2*pos+2] = data;
       swap(pos, 2*pos+2);
+      return;
     }
-  }*/
-
-public void insertLeft(int data, int pos) {
-  if(a[parent(2*pos+1)] > data) {
-    a[2*pos+1] = data;
-  } else {
-    insertLeft(data, parent(pos));
-    swap(pos, 2*pos+1);
   }
-}
-
-public void insertRight(int data, int pos) {
-  if(a[parent(2*pos+2)] > data) {
-    a[2*pos+2] = data;
-  } else {
-    insertRight(data, parent(pos));
-    swap(pos, 2*pos+2);
-  }
-}
 
   public void printLevelOrder() {
     for(int i = 0; i < 7; i++) {
