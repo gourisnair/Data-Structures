@@ -4,6 +4,7 @@ class Stack{
 	char a[];
 	int size;
 	int top;
+
 	Stack(int size) {
 		a = new char[max];
 		this.size = size;
@@ -47,10 +48,13 @@ class Stack{
 	public boolean paranthesisBal(String s) {
 
 		for(int i = 0; i < s.length(); i++) {
+
 			char x = s.charAt(i);
+
 			if(x == '{' || x == '(' || x == '[') {
 				push(x);
 			}
+
 			if(x == ')') {
 				char c = peek();
 				if(c == '(') {
@@ -80,9 +84,10 @@ class Stack{
 					}
 				}
 			}
-
 		}
+
 		return isEmpty();
+    
 	}
 }
 
