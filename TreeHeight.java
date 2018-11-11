@@ -15,9 +15,6 @@ class Bst{
   }
 
   public void insert(int data, Node root) {
-    if(root == null) {
-      return;
-    }
     if(data < root.data) {
       if(root.left == null) {
         root.left = new Node(data);
