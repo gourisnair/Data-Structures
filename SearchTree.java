@@ -46,6 +46,28 @@ class Bst{
       }
     }
   }
+
+  public int minimum(Node root) {
+    if(root == null) {
+      return 0;
+    }
+    if(root.left == null) {
+      return root.data;
+    } else {
+      return minimum(root.left);
+    }
+  }
+
+  public int maximum(Node root) {
+    if(root == null) {
+      return 0;
+    }
+    if(root.right == null) {
+      return root.data;
+    } else {
+      return maximum(root.right);
+    }
+  }
 }
 
 
@@ -57,7 +79,10 @@ public class SearchTree {
     b.insert(32, b.root);
     b.insert(92, b.root);
     b.insert(56, b.root);
+    b.insert(12, b.root);
     System.out.println(b.search(92, b.root));
     System.out.println(b.search(20, b.root));
+    System.out.println(b.minimum(b.root));
+    System.out.println(b.maximum(b.root));
   }
 }
